@@ -1,0 +1,37 @@
+
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  cases     Case[]
+  createdAt DateTime @default(now())
+}
+
+model Case {
+  id            String   @id @default(uuid())
+  title         String
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  results       AnalysisResult[]
+  createdAt     DateTime @default(now())
+}
+
+model AnalysisResult {
+  id        String   @id @default(uuid())
+  case      Case     @relation(fields: [caseId], references: [id])
+  caseId    String
+  summary   String
+  score     Float?
+  createdAt DateTime @default(now())
+}

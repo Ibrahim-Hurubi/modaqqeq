@@ -1,0 +1,27 @@
+{
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "submit": "Login",
+    "loggingIn": "Logging in...",
+    "demoCredentials": "Demo Login Credentials",
+    "title": "Sign in",
+    "subtitle": "Enter your credentials to continue"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "howItWorks": "How it Works",
+    "video": "Video",
+    "technologies": "Technologies",
+    "contact": "Contact",
+    "login": "Login",
+    "dashboard": "Dashboard"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "dark": "Dark mode",
+    "light": "Light mode"
+  }
+}
