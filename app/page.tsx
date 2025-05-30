@@ -111,59 +111,89 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-teal-600/10"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="text-center max-w-5xl mx-auto">
-            <Badge
-              variant="outline"
-              className={`mb-8 px-6 py-2 text-lg border-blue-200 bg-blue-50/80 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300 ${
-                language === "ar" ? "font-arabic" : ""
-              }`}
-            >
-              {t("home.badge.platform")}
-            </Badge>
+  {/* Decorative Background Effects */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="w-[600px] h-[600px] bg-blue-200/30 rounded-full blur-3xl absolute -top-20 -left-20"></div>
+    <div className="w-[400px] h-[400px] bg-purple-200/30 rounded-full blur-2xl absolute top-32 right-10"></div>
+  </div>
 
-            <h1
-  className={`text-5xl md:text-7xl font-bold mb-8 text-balance max-w-4xl mx-auto text-blue-900 dark:text-white leading-tight ${
-    language === "ar" ? "font-arabic" : ""
-  }`}
->
-  {t("home.hero.title")}
-</h1>
+  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-teal-600/10"></div>
+  <div className="container mx-auto px-4 relative">
+    <div className="text-center max-w-5xl mx-auto">
+      <Badge
+        variant="outline"
+        className={`mb-8 px-6 py-2 text-lg border-blue-200 bg-blue-50/80 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300 ${
+          language === "ar" ? "font-arabic" : ""
+        }`}
+      >
+        {t("home.badge.platform")}
+      </Badge>
 
-            <p
-              className={`text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed ${
-                language === "ar" ? "font-arabic" : ""
-              }`}
-            >
-              {t("home.hero.subtitle")}
-            </p>
+      {/* AI Icon + Title */}
+      <div className="flex justify-center items-center gap-4 mb-6">
+        <Image src="/icons/ai-chip.svg" alt="AI Icon" width={48} height={48} />
+        <h1
+          className={`text-5xl md:text-7xl font-bold text-balance max-w-4xl mx-auto text-blue-900 dark:text-white leading-tight ${
+            language === "ar" ? "font-arabic" : ""
+          }`}
+        >
+          {t("home.hero.title")}
+        </h1>
+      </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/dashboard">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-                >
-                  {t("home.hero.cta")}
-                  {language === "ar" ? <ArrowLeft className="w-5 h-5 mr-2" /> : <ArrowRight className="w-5 h-5 ml-2" />}
-                </Button>
-              </Link>
+      <p
+        className={`text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed ${
+          language === "ar" ? "font-arabic" : ""
+        }`}
+      >
+        {t("home.hero.subtitle")}
+      </p>
 
-              <Link href="/video">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-gray-300 hover:border-blue-500 px-8 py-4 text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300"
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  {t("home.hero.watchVideo")}
-                </Button>
-              </Link>
-            </div>
+      {/* Catchy Slogan */}
+      <p className="text-gray-700 dark:text-gray-300 text-lg mb-10">
+        نحلل البيانات، نرصد التلاعب، ونحمي الثقة
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <Link href="/dashboard">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+          >
+            {t("home.hero.cta")}
+            {language === "ar" ? <ArrowLeft className="w-5 h-5 mr-2" /> : <ArrowRight className="w-5 h-5 ml-2" />}
+          </Button>
+        </Link>
+
+        <Link href="/video">
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-2 border-gray-300 hover:border-blue-500 px-8 py-4 text-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300"
+          >
+            <Play className="w-5 h-5 mr-2" />
+            {t("home.hero.watchVideo")}
+          </Button>
+        </Link>
+      </div>
+
+      {/* Animated Stats Row */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mt-16">
+        {[
+          { label: 'تحليلات', value: '2.5M+' },
+          { label: 'دقة', value: '99.8%' },
+          { label: 'جهات مرتبطة', value: '150+' },
+          { label: 'الاستجابة', value: '< 1s' },
+        ].map((item, i) => (
+          <div key={i} className="text-gray-700 dark:text-white">
+            <div className="text-3xl font-bold">{item.value}</div>
+            <div className="text-sm opacity-80">{item.label}</div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Stats Section */}
       <section className="py-20 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
