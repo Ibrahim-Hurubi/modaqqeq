@@ -118,31 +118,13 @@ export default function HomePage() {
   </div>
 
   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-teal-600/10"></div>
+
   <div className="container mx-auto px-4 relative">
     <div className="text-center max-w-5xl mx-auto">
-      <div className="flex justify-center items-center gap-4 mb-6">
-  <Image src="/icons/ai-chip.png" alt="AI Icon" width={48} height={48} />
-  <h1
-    className={`text-5xl md:text-7xl font-bold text-balance max-w-4xl mx-auto text-blue-900 dark:text-white leading-tight ${
-      language === "ar" ? "font-arabic" : ""
-    }`}
-  >
-    {t("home.hero.title")}
-  </h1>
-</div>
-
-      <Badge
-        variant="outline"
-        className={`mb-8 px-6 py-2 text-lg border-blue-200 bg-blue-50/80 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300 ${
-          language === "ar" ? "font-arabic" : ""
-        }`}
-      >
-        {t("home.badge.platform")}
-      </Badge>
 
       {/* AI Icon + Title */}
       <div className="flex justify-center items-center gap-4 mb-6">
-        <Image src="/icons/ai-chip.svg" alt="AI Icon" width={48} height={48} />
+        <Image src="/ai-chip.png" alt="AI Icon" width={48} height={48} />
         <h1
           className={`text-5xl md:text-7xl font-bold text-balance max-w-4xl mx-auto text-blue-900 dark:text-white leading-tight ${
             language === "ar" ? "font-arabic" : ""
@@ -151,6 +133,16 @@ export default function HomePage() {
           {t("home.hero.title")}
         </h1>
       </div>
+
+      {/* Badge inside the right block */}
+      <Badge
+        variant="outline"
+        className={`mb-8 px-6 py-2 text-lg border-blue-200 bg-blue-50/80 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300 ${
+          language === "ar" ? "font-arabic" : ""
+        }`}
+      >
+        {t("home.badge.platform")}
+      </Badge>
 
       <p
         className={`text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed ${
@@ -172,7 +164,11 @@ export default function HomePage() {
             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
           >
             {t("home.hero.cta")}
-            {language === "ar" ? <ArrowLeft className="w-5 h-5 mr-2" /> : <ArrowRight className="w-5 h-5 ml-2" />}
+            {language === "ar" ? (
+              <ArrowLeft className="w-5 h-5 mr-2" />
+            ) : (
+              <ArrowRight className="w-5 h-5 ml-2" />
+            )}
           </Button>
         </Link>
 
@@ -190,7 +186,7 @@ export default function HomePage() {
 
       {/* Animated Stats Row */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mt-16">
-        {[
+        {[ 
           { label: 'تحليلات', value: '2.5M+' },
           { label: 'دقة', value: '99.8%' },
           { label: 'جهات مرتبطة', value: '150+' },
@@ -205,6 +201,7 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+
 
       {/* Stats Section */}
       <section className="py-20 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
@@ -343,13 +340,13 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
               <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
                 <Image
-                  src="dashboard-preview.png"
-                  alt="Dashboard Preview"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto hover:scale-105 transition-transform duration-700"
-                  priority
-                />
+  src="/dashboard-preview.png"
+  alt="Dashboard Preview"
+  width={600}
+  height={400}
+  className="w-full h-auto hover:scale-105 transition-transform duration-700"
+  priority
+/>
               </div>
             </div>
           </div>
