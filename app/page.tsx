@@ -120,6 +120,17 @@ export default function HomePage() {
   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-teal-600/10"></div>
   <div className="container mx-auto px-4 relative">
     <div className="text-center max-w-5xl mx-auto">
+      <div className="flex justify-center items-center gap-4 mb-6">
+  <Image src="/icons/ai-chip.png" alt="AI Icon" width={48} height={48} />
+  <h1
+    className={`text-5xl md:text-7xl font-bold text-balance max-w-4xl mx-auto text-blue-900 dark:text-white leading-tight ${
+      language === "ar" ? "font-arabic" : ""
+    }`}
+  >
+    {t("home.hero.title")}
+  </h1>
+</div>
+
       <Badge
         variant="outline"
         className={`mb-8 px-6 py-2 text-lg border-blue-200 bg-blue-50/80 text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-300 ${
@@ -332,7 +343,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
               <div className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
                 <Image
-                  src="/images/dashboard-preview.png"
+                  src="dashboard-preview.png"
                   alt="Dashboard Preview"
                   width={600}
                   height={400}
