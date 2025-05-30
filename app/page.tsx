@@ -124,12 +124,12 @@ export default function HomePage() {
             </Badge>
 
             <h1
-              className={`text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent leading-tight ${
-                language === "ar" ? "font-arabic" : ""
-              }`}
-            >
-              {t("home.hero.title")}
-            </h1>
+  className={`text-5xl md:text-7xl font-bold mb-8 text-balance max-w-4xl mx-auto bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent leading-tight ${
+    language === "ar" ? "font-arabic" : ""
+  }`}
+>
+  {t("home.hero.title")}
+</h1>
 
             <p
               className={`text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed ${
