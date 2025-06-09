@@ -1,6 +1,5 @@
 "use client"
-
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -31,7 +30,27 @@ export default function DashboardPage() {
   const { t, language } = useLanguage()
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState("all")
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
+  const handleUploadClick = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        body: formData,
+      })
+
+      const result = await response.json()
+      console.log("نتيجة الذكاء الاصطناعي:", result)
+    }
+  }
   const stats = [
     {
       title: t("dashboard.totalCases"),
@@ -74,7 +93,6 @@ export default function DashboardPage() {
       details: language === "ar" ? "لا توجد تغييرات كبيرة في آخر 7 أيام" : "No major changes in the last 7 days",
     },
   ]
-
   const recentCases = [
     {
       id: "CASE-001",
@@ -127,7 +145,6 @@ export default function DashboardPage() {
       estimatedCompletion: language === "ar" ? "5 أيام" : "5 days",
     },
   ]
-
   const recentActivities = [
     {
       id: 1,
@@ -159,8 +176,7 @@ export default function DashboardPage() {
     {
       id: 4,
       type: "alert",
-      message:
-        language === "ar" ? "تنبيه: نشاط مشبوه في القطاع المالي" : "Alert: Suspicious activity in financial sector",
+      message: language === "ar" ? "تنبيه: نشاط مشبوه في القطاع المالي" : "Alert: Suspicious activity in financial sector",
       time: language === "ar" ? "منذ ساعتين" : "2 hours ago",
       icon: AlertCircle,
       color: "text-red-500",
@@ -229,7 +245,7 @@ export default function DashboardPage() {
     },
   ]
 
-  const getRiskBadgeColor = (risk: string) => {
+    const getRiskBadgeColor = (risk: string) => {
     const riskMap = {
       عالي: "bg-red-100 text-red-800 border-red-200",
       High: "bg-red-100 text-red-800 border-red-200",
@@ -274,33 +290,7 @@ export default function DashboardPage() {
     return matchesSearch && matchesFilter
   })
 
-  return (
-    import { useRef } from "react"
-
-const fileInputRef = useRef<HTMLInputElement | null>(null)
-
-const handleUploadClick = () => {
-  fileInputRef.current?.click()
-}
-
-const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-  const file = event.target.files?.[0]
-  if (file) {
-    const formData = new FormData()
-    formData.append("file", file)
-
-    // استدعاء API لتحليل الملف
-    const response = await fetch("/api/analyze", {
-      method: "POST",
-      body: formData,
-    })
-
-    const result = await response.json()
-    console.log("نتيجة الذكاء الاصطناعي:", result)
-    // تقدر تعرض النتيجة في Toast أو Modal أو State
-  }
-}
-
+    return (
     <div className={`min-h-screen bg-gray-50 dark:bg-gray-900 py-8 ${language === "ar" ? "rtl" : "ltr"}`}>
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -320,32 +310,29 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                 </span>
               </div>
             </div>
+
             <div className="flex gap-3">
               <Button variant="outline" className="flex items-center gap-2">
                 <Download className="w-4 h-4" />
                 {t("dashboard.exportReport")}
               </Button>
-              <>
-  <input
-    ref={fileInputRef}
-    type="file"
-    accept=".pdf,.doc,.docx,.txt"
-    onChange={handleFileChange}
-    className="hidden"
-  />
-  <Button onClick={handleUploadClick} className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
-    <AlertTriangle className="w-4 h-4" />
-    {t("dashboard.analyzeCase")}
-  </Button>
-</>
 
-                <AlertTriangle className="w-4 h-4" />
-                {t("dashboard.analyzeCase")}
-              </Button>
+              <>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf,.doc,.docx,.txt"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                <Button onClick={handleUploadClick} className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  {t("dashboard.analyzeCase")}
+                </Button>
+              </>
             </div>
           </div>
         </div>
-
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
@@ -362,8 +349,8 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                       stat.changeType === "positive"
                         ? "text-green-600"
                         : stat.changeType === "negative"
-                          ? "text-red-600"
-                          : "text-gray-600"
+                        ? "text-red-600"
+                        : "text-gray-600"
                     }`}
                   >
                     {stat.changeType === "positive" && <TrendingUp className="w-3 h-3" />}
@@ -380,7 +367,6 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
             </Card>
           ))}
         </div>
-
         {/* Main Content */}
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cases Table */}
@@ -451,21 +437,20 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                             </Button>
                           </div>
                         </div>
-
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                           <div className={language === "ar" ? "text-right" : "text-left"}>
                             <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{case_.company}</h4>
                             <p className="text-sm text-gray-600 dark:text-gray-400">{case_.type}</p>
-                            <p
-                              className={`text-xs text-gray-500 mt-1 ${language === "ar" ? "text-right" : "text-left"}`}
-                            >
+                            <p className={`text-xs text-gray-500 mt-1 ${language === "ar" ? "text-right" : "text-left"}`}>
                               {case_.description}
                             </p>
                           </div>
                           <div className={`${language === "ar" ? "text-right" : "text-left"} md:text-right`}>
                             <p className="font-semibold text-gray-900 dark:text-white text-lg">{case_.amount}</p>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
-                              {language === "ar" ? `المحقق: ${case_.assignedTo}` : `Investigator: ${case_.assignedTo}`}
+                              {language === "ar"
+                                ? `المحقق: ${case_.assignedTo}`
+                                : `Investigator: ${case_.assignedTo}`}
                             </p>
                             <p className="text-xs text-gray-500">
                               {language === "ar"
@@ -502,7 +487,6 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
               </CardContent>
             </Card>
           </div>
-
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
@@ -561,7 +545,6 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                 </div>
               </CardContent>
             </Card>
-
             {/* Recent Activity */}
             <Card className="border-0 shadow-lg">
               <CardHeader>
@@ -602,8 +585,12 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                     <Zap className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-green-900 dark:text-green-200">{t("dashboard.systemStatus")}</h3>
-                    <p className="text-sm text-green-700 dark:text-green-300">{t("dashboard.allSystemsOperational")}</p>
+                    <h3 className="font-semibold text-green-900 dark:text-green-200">
+                      {t("dashboard.systemStatus")}
+                    </h3>
+                    <p className="text-sm text-green-700 dark:text-green-300">
+                      {t("dashboard.allSystemsOperational")}
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -620,9 +607,9 @@ const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div> {/* End Sidebar */}
+        </div> {/* End Grid */}
+      </div> {/* End Container */}
+    </div> {/* End Page Wrapper */}
   )
 }
