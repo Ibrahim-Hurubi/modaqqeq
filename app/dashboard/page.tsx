@@ -335,15 +335,18 @@ export default function DashboardPage() {
         </div>
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
+          {stats.map((stat, index) => {
+  const Icon = stat.icon
+  return (
+    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div
+            className={`w-12 h-12 rounded-xl ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+          >
+            <Icon className="w-6 h-6 text-white" />
+          </div>
+
                   <div
                     className={`text-sm flex items-center gap-1 ${
                       stat.changeType === "positive"
