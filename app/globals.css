@@ -137,3 +137,49 @@ body {
 .min-h-screen {
   min-height: 100vh;
 }
+
+/* Enhanced governmental style adjustments */
+
+body {
+  font-family: 'Cairo', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f9fafb; /* subtle gray background for a clean look */
+  color: #212529;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0d1b2a; /* dark navy for headings */
+}
+
+button, .button {
+  background-color: #005f73; /* government blue-green */
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+button:hover, .button:hover {
+  background-color: #0a9396;
+}
+
+header, footer {
+  background-color: #001219; /* very dark blue for header/footer */
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+a {
+  color: #005f73;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

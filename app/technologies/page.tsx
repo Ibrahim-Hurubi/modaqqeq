@@ -18,7 +18,7 @@ export default function TechnologiesPage() {
         {
           name: "Python",
           description:
-            language === "ar" ? "لغة البرمجة الأساسية للذكاء الاصطناعي" : "Primary programming language for AI",
+            language === "ar" ? "لغة البرمجة الأساسية للذكاء الاصطناعي" : "Primary programming language for ",
           proficiency: 95,
         },
         {

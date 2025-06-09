@@ -275,6 +275,32 @@ export default function DashboardPage() {
   })
 
   return (
+    import { useRef } from "react"
+
+const fileInputRef = useRef<HTMLInputElement | null>(null)
+
+const handleUploadClick = () => {
+  fileInputRef.current?.click()
+}
+
+const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const file = event.target.files?.[0]
+  if (file) {
+    const formData = new FormData()
+    formData.append("file", file)
+
+    // استدعاء API لتحليل الملف
+    const response = await fetch("/api/analyze", {
+      method: "POST",
+      body: formData,
+    })
+
+    const result = await response.json()
+    console.log("نتيجة الذكاء الاصطناعي:", result)
+    // تقدر تعرض النتيجة في Toast أو Modal أو State
+  }
+}
+
     <div className={`min-h-screen bg-gray-50 dark:bg-gray-900 py-8 ${language === "ar" ? "rtl" : "ltr"}`}>
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -299,7 +325,20 @@ export default function DashboardPage() {
                 <Download className="w-4 h-4" />
                 {t("dashboard.exportReport")}
               </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+              <>
+  <input
+    ref={fileInputRef}
+    type="file"
+    accept=".pdf,.doc,.docx,.txt"
+    onChange={handleFileChange}
+    className="hidden"
+  />
+  <Button onClick={handleUploadClick} className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2">
+    <AlertTriangle className="w-4 h-4" />
+    {t("dashboard.analyzeCase")}
+  </Button>
+</>
+
                 <AlertTriangle className="w-4 h-4" />
                 {t("dashboard.analyzeCase")}
               </Button>

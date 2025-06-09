@@ -51,7 +51,7 @@ export function Footer() {
             <p className="text-gray-300 mb-8 max-w-md leading-relaxed text-lg">
               {language === "ar"
                 ? "منصة ذكاء اصطناعي متطورة لكشف الاحتيال المالي وحماية الأموال في القطاع المؤسسي."
-                : "Advanced AI platform for financial fraud detection and fund protection in the institutional sector."}
+                : "Advanced  platform for financial fraud detection and fund protection in the institutional sector."}
             </p>
             <div className="space-y-3 text-sm text-gray-400">
               <div className="flex items-center gap-3">

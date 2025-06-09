@@ -328,12 +328,12 @@ const translations = {
     // Home Page
     "home.hero.title": "Modaqqeq - Financial Fraud Detection System",
     "home.hero.subtitle":
-      "Advanced AI system for monitoring and detecting financial fraud in Ministry of Human Resources and Social Development services",
+      "Advanced  system for monitoring and detecting financial fraud in Ministry of Human Resources and Social Development services",
     "home.hero.cta": "Access System",
     "home.hero.watchVideo": "Watch How It Works",
     "home.features.title": "System Features",
     "home.features.subtitle": "Integrated system for detecting financial fraud and work permit violations",
-    "home.features.ai.title": "Advanced AI",
+    "home.features.ai.title": "Advanced ",
     "home.features.ai.desc": "Machine learning algorithms to analyze fraud patterns and early detection of violations",
     "home.features.realtime.title": "Real-time Monitoring",
     "home.features.realtime.desc":
@@ -362,10 +362,10 @@ const translations = {
 
     // About Page
     "about.title": "About Us",
-    "about.subtitle": "We are a specialized team in developing AI solutions to protect public funds",
+    "about.subtitle": "We are a specialized team in developing  solutions to protect public funds",
     "about.badge.platform": "Advanced Government Platform",
     "about.description":
-      "Modaqqeq is an advanced government AI platform aimed at detecting financial fraud and protecting public funds. The platform uses the latest machine learning and artificial intelligence technologies to analyze financial data and detect suspicious patterns with high accuracy.",
+      "Modaqqeq is an advanced government  platform aimed at detecting financial fraud and protecting public funds. The platform uses the latest machine learning and artificial intelligence technologies to analyze financial data and detect suspicious patterns with high accuracy.",
     "about.vision.title": "Our Vision",
     "about.vision.desc":
       "To be the leading platform in protecting public funds and enhancing financial integrity in government entities",
@@ -406,7 +406,7 @@ const translations = {
     "howItWorks.step1.title": "Data Collection",
     "howItWorks.step1.desc": "Collecting and analyzing financial data from multiple sources securely and encrypted",
     "howItWorks.step2.title": "Smart Analysis",
-    "howItWorks.step2.desc": "Using AI algorithms to analyze data and detect suspicious patterns",
+    "howItWorks.step2.desc": "Using  algorithms to analyze data and detect suspicious patterns",
     "howItWorks.step3.title": "Risk Detection",
     "howItWorks.step3.desc": "Identifying and classifying risks and suspicious cases with high accuracy",
     "howItWorks.step4.title": "Reports and Actions",
@@ -432,7 +432,7 @@ const translations = {
     "tech.title": "Technologies Used",
     "tech.subtitle": "We use the latest technologies and tools to ensure the best performance and security",
     "tech.badge.advanced": "Advanced Technologies",
-    "tech.categories.ai": "Artificial Intelligence",
+    "tech.categories.ai": "",
     "tech.categories.database": "Databases",
     "tech.categories.security": "Security & Protection",
     "tech.categories.frontend": "User Interface",
@@ -443,7 +443,7 @@ const translations = {
     "tech.architecture.frontend.desc": "Interactive and responsive user interface",
     "tech.architecture.backend": "Backend",
     "tech.architecture.backend.desc": "Powerful and reliable servers for data processing",
-    "tech.architecture.ai": "AI Engine",
+    "tech.architecture.ai": " Engine",
     "tech.architecture.ai.desc": "Advanced algorithms for fraud detection",
     "tech.integrations": "Integrations",
     "tech.integrations.hrsd": "Government Systems",

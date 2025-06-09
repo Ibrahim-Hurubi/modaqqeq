@@ -16,8 +16,8 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   title: "مدقق | Modaqqeq - منصة الذكاء الاصطناعي لكشف الاحتيال المالي",
   description:
-    "منصة ذكاء اصطناعي حكومية لرصد الاحتيال المالي وتعزيز النزاهة في خدمات وزارة الموارد البشرية والتنمية الاجتماعية",
-    generator: 'v0.dev'
+    "منصة ذكاء اصطناعي لرصد الاحتيال المالي وتعزيز النزاهة في خدمات وزارة الموارد البشرية والتنمية الاجتماعية",
+    
 }
 
 export default function RootLayout({
@@ -27,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
-      <body className="font-sans antialiased min-h-screen flex flex-col">
+      <body>
+<div className='bg-yellow-200 text-yellow-800 text-center p-2 text-sm'>هذا المشروع هو مشاركة في هاكاثون الابتكار وليس منصة حكومية رسمية.</div>
+ className="font-sans antialiased min-h-screen flex flex-col">
         <LanguageProvider>
           <div className="flex-1 flex flex-col">
             <Navigation />

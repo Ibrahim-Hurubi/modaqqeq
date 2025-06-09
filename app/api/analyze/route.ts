@@ -1,5 +1,5 @@
 
-// app/api/analyze/route.ts
+// Enhanced API Route for analyzing files - Hackathon version, non-official governmental use.
 
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -12,26 +12,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
     }
 
-    // Example: Send file content to an external AI API
-    // You can replace this with your own logic
+    // Ensure file is of allowed type and size
+    if (file.size > 1024 * 1024 * 10) { // limit to 10MB
+      return NextResponse.json({ error: 'File size exceeds the limit (10MB)' }, { status: 413 })
+    }
+
     const fileBuffer = await file.arrayBuffer()
-    const fileContent = Buffer.from(fileBuffer).toString('base64')
+    const fileContent = Buffer.from(fileBuffer).toString()
 
-    // Simulated call to AI API (replace with real endpoint)
-    const response = await fetch('https://api.example.com/analyze', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_API_KEY'
-      },
-      body: JSON.stringify({ file: fileContent })
-    })
+    // Insert file analysis logic here
+    // For demonstration, we'll return the file size
+    return NextResponse.json({ message: 'File analyzed successfully', size: file.size })
 
-    const result = await response.json()
-
-    return NextResponse.json({ success: true, result })
   } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error: 'Failed to analyze document' }, { status: 500 })
+    console.error('Internal server error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
